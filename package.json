@@ -1,0 +1,27 @@
+{
+  "name": "dhand",
+  "description": "A React hook to guess the dominant hand of the user.",
+  "version": "0.1.0",
+  "source": "dhand.js",
+  "exports": {
+    "require": "./dist/dhand.js",
+    "default": "./dist/dhand.modern.mjs"
+  },
+  "main": "./dist/dhand.js",
+  "module": "./dist/dhand.module.js",
+  "unpkg": "./dist/dhand.umd.js",
+  "files": [
+    "dist/*"
+  ],
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "devDependencies": {
+    "focusable-selectors": "^0.4.0",
+    "microbundle": "^0.15.1"
+  }
+}
