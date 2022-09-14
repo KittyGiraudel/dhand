@@ -57,3 +57,7 @@ All options are strictly optional as they come with sensible default values:
 ### No event seems to register
 
 This might be because your device does not have touch capabilities. Unless you can try on an actual mobile device or in a proper mobile emulator, you might want to turn off the `touchEventsOnly` option to disable the touch device capability check.
+
+### What about RTL?
+
+The library doesn’t make directional considerations per se. All it computes is which side of the screen is the most used. Feel free to use that knowledge the way you see fit.
