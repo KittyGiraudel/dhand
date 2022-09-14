@@ -44,12 +44,13 @@ const useDominantHandScore = ({
 
       // Convert the tap position in % to a number between -1 and +1
       const position = (getTapPosition(event) - 50) / 50
+      const isCloseToCenter =
+        (position > -centerDiscardThreshold && position <= 0) ||
+        (position < +centerDiscardThreshold && position >= 0)
 
-      if (
-        (position > centerDiscardThreshold * -1 && position <= 0) ||
-        (position >= 0 && position < centerDiscardThreshold)
-      )
-        return false
+      // If the tap occurred close to the center of the element, discard it as
+      // it is deemed unreliable
+      if (isCloseToCenter) return false
 
       setTapCount(count => count + 1)
       setTapScore(score => score + position)
@@ -69,9 +70,10 @@ const useDominantHandScore = ({
 }
 
 function getTapPosition(event) {
-  return Math.round(
-    ((event.clientX - event.target.offsetLeft) / event.target.offsetWidth) * 100
-  )
+  const { target, clientX } = event
+  const { offsetLeft, offsetWidth } = target
+
+  return Math.round(((clientX - offsetLeft) / offsetWidth) * 100)
 }
 
 function getViewportWidth() {
