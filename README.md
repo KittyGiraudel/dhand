@@ -26,18 +26,25 @@ The hook returns an object with the following key:
 import useDominantHand from 'dhand'
 
 const MyComponent = () => {
-  const { score, tapScore, tapCount } = useDominantHand(/* options */)
+  const { score, tapCount } = useDominantHand(/* options */)
+  const likelihood = Math.abs(score * 100).toFixed(2)
 
   return (
     <div className="App">
       <h1>dhand</h1>
-      <p>
-        Current score: {score} ({tapScore} over {tapCount} taps)
-      </p>
-      <p>
-        Guessed dominant hand:{' '}
-        {score < 0 ? 'left' : score > 0 ? 'right' : 'no-preference'}
-      </p>
+      <dl>
+        <dt>Guessed hand</dt>
+        <dd>{score < 0 ? 'left' : score > 0 ? 'right' : 'unknown'}</dd>
+
+        <dt>Likelihood</dt>
+        <dd>{likelihood}%</dd>
+
+        <dt>Amount of taps</dt>
+        <dd>{tapCount}</dd>
+
+        <dt>Score</dt>
+        <dd>{score.toFixed(2)}</dd>
+      </dl>
     </div>
   )
 }
