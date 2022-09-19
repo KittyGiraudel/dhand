@@ -3,7 +3,7 @@ import focusableSelectors from 'focusable-selectors'
 
 // Returns a number between -1 and +1 to convey the guessed dominant hand, with
 // -1 being left side and +1 being right side.
-const useDominantHandScore = ({
+const useDominantHand = ({
   // Arbitrary maximum screen width to compute score for; anything beyond that
   // is considered not a mobile device and thus discarded
   maximumScreenWidth = 767,
@@ -96,4 +96,4 @@ function isVisible(element) {
   )
 }
 
-export default useDominantHandScore
+export default useDominantHand
